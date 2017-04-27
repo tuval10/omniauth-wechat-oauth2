@@ -35,6 +35,10 @@ module OmniAuth
         {raw_info: raw_info}
       end
 
+      def full_host
+        "http%://www.24ftx.com"
+      end
+
       def request_phase
         params = client.auth_code.authorize_params.merge(redirect_uri: callback_url).merge(authorize_params)
         params["appid"] = params.delete("client_id")
