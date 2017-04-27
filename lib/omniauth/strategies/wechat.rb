@@ -36,7 +36,7 @@ module OmniAuth
       end
 
       def full_host
-        "http%://www.24ftx.com"
+        "http://www.24ftx.com"
       end
 
       def request_phase
