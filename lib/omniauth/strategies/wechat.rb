@@ -35,10 +35,6 @@ module OmniAuth
         {raw_info: raw_info}
       end
 
-      def full_host
-        "http://www.24ftx.com"
-      end
-
       def request_phase
         params = client.auth_code.authorize_params.merge(redirect_uri: callback_url).merge(authorize_params)
         params["appid"] = params.delete("client_id")
@@ -61,7 +57,7 @@ module OmniAuth
       end
 
       def client
-        ::OAuth2::Client.new(options.client_id.call(request.host), options.client_secret.call(request.host), deep_symbolize(options.client_options))
+          ::OAuth2::Client.new(options.client_id.call(request.host), options.client_secret.call(request.host), deep_symbolize(options.client_options))
       end
 
       protected
