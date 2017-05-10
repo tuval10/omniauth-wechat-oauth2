@@ -15,6 +15,7 @@ module OmniAuth
       option :authorize_params, {scope: "snsapi_userinfo"}
 
       option :token_params, {parse: :json}
+      option :full_host
 
       uid do
         raw_info['openid']
@@ -58,6 +59,10 @@ module OmniAuth
 
       def client
           ::OAuth2::Client.new(options.client_id.call(request.host), options.client_secret.call(request.host), deep_symbolize(options.client_options))
+      end
+
+      def full_host
+        options.full_host.call(request.host)
       end
 
       protected
